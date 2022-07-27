@@ -21,6 +21,15 @@ public class BowlingKataTest {
         assertEquals(20, game.score());
     }
 
+    @Test void sparePlusThreeScoresSixteen() {
+        game.roll(5);
+        game.roll(5);
+        game.roll(3);
+        rollMany(17, 0);
+
+        assertEquals(16, game.score());
+    }
+
     private void rollMany(int times, int pinsDown) {
         for (int i = 0; i < times; i++) {
             game.roll(pinsDown);
