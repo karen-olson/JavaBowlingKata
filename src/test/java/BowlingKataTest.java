@@ -1,7 +1,9 @@
 import org.junit.jupiter.api.Test;
 
 public class BowlingKataTest {
-    @Test void canCreateAGame() {
+    @Test void canRoll() {
         Game game = new Game();
+
+        game.roll();
     }
 }
