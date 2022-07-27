@@ -33,6 +33,12 @@ public class BowlingKataTest {
         assertEquals(22, game.score());
     }
 
+    @Test void twelveStrikesScoresThreeHundred() {
+        rollMany(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+        assertEquals(300, game.score());
+    }
+
     private void rollMany(int...rolls) {
         for (int pinsDown : rolls) {
             game.roll(pinsDown);
