@@ -13,19 +13,33 @@ public class Game {
         int cursor = 0;
 
         for (int frame = 0; frame < 10 ; frame++) {
-            if (isSpare(cursor)) {
-                score += 10 + rolls.get(cursor + 2);
+            if (isStrike(cursor)) {
+                score += strikeBonus(cursor);
+                cursor += 1;
+            } else if(isSpare(cursor)) {
+                score += spareBonus(cursor);
                 cursor += 2;
             } else {
-                score += rolls.get(cursor) + rolls.get(cursor + 1);
+                score += regularRollBonus(cursor);
                 cursor += 2;
             }
         }
-
         return score;
     }
 
+    private boolean isStrike(int cursor) {
+        return rolls.get(cursor) == 10;
+    }
+    private int strikeBonus(int cursor) {
+        return 10 + rolls.get(cursor + 1) + rolls.get(cursor + 2);
+    }
     private boolean isSpare(int cursor) {
         return rolls.get(cursor) + rolls.get(cursor + 1) == 10;
+    }
+    private int spareBonus(int cursor) {
+        return 10 + rolls.get(cursor + 2);
+    }
+    private int regularRollBonus(int cursor) {
+        return rolls.get(cursor) + rolls.get(cursor + 1);
     }
 }
